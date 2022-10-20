@@ -40,21 +40,17 @@ describe('6 - Implemente os casos de teste para a função `productDetails`', ()
     // Teste se quando passado parâmetros diferentes entre si, os dois objetos também são diferentes entre si.
     // Teste se os dois productIds terminam com 123.
   });
-  it('Segundo Teste', () =>{
-    expect(typeof productDetails()).toBe('array')
+  it('Segundo Teste', () => {
+    expect(Array.isArray(productDetails())).toBe(true)
   });
-  it('Terceiro Teste', () =>{
+  it('Terceiro Teste', () => {
     expect(Object.keys(productDetails('a', 'b')).length).toEqual(2);
   });
-  it('Quarto Teste', () =>{
+  it('Quarto Teste', () => {
     expect(typeof Object.keys(productDetails('a', 'b'))).toEqual('object')
   });
-  it('Quinto Teste', () =>{
+  it('Quinto Teste', () => {
     const product = productDetails('a', 'b');
-    expect(product).toBe(
-      expect.arrayContaining([
-        expect(product[0]).not.toEqual(product[1])
-      ])
-    )
+    expect(JSON.stringify(product[0]) !== JSON.stringify(product[1])).toBe(true)
   });
 });
